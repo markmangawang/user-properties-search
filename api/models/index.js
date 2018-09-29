@@ -11,6 +11,7 @@ const sequelize = new Sequelize(
 const database = {
   sequelize,
   Sequelize,
+  User: sequelize.import('./user'),
 };
 
 export default database;

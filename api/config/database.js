@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 dotenv.load();
 
@@ -8,7 +8,7 @@ const config = {
   development: {
     username: process.env.DB_DEV_USERNAME,
     password: process.env.DB_DEV_PASSWORD,
-    database: process.env.DB_DEV_NAME || 'user_properties_dev_db',
+    database: 'user_properties_dev_db',
     host: '127.0.0.1',
     dialect: 'postgres',
   },
@@ -28,4 +28,4 @@ const config = {
   },
 };
 
-export default config[env];
+module.exports = config[env];

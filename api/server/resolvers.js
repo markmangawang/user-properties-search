@@ -1,16 +1,3 @@
-const users = [
-  {
-    id: 1,
-    firstName: 'Johnny',
-    lastName: 'Test',
-  },
-  {
-    id: 2,
-    firstName: 'Johnny 2',
-    lastName: 'Test 2',
-  },
-];
-
 const properties = [
   {
     id: 1,
@@ -41,7 +28,7 @@ const properties = [
 const resolvers = {
   Query: {
     hello: () => 'Hello World',
-    users: () => users,
+    users: (parent, args, { models }) => models.User.findAll(),
     properties: () => properties,
   },
 };
