@@ -12,6 +12,13 @@ const database = {
   sequelize,
   Sequelize,
   User: sequelize.import('./user'),
+  Property: sequelize.import('./property'),
 };
+
+Object.keys(database).forEach((modelName) => {
+  if ('associate' in database[modelName]) {
+    database[modelName].associate(database);
+  }
+});
 
 export default database;

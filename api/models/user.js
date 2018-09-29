@@ -6,5 +6,12 @@ export default (sequelize, DataTypes) => {
     tableName: 'users',
   });
 
+  User.associate = (models) => {
+    User.hasMany(models.Property, {
+      foreignKey: 'userId',
+      as: 'properties',
+    });
+  };
+
   return User;
 };

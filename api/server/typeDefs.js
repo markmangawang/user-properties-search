@@ -5,6 +5,7 @@ const typeDefs = gql`
     id: ID
     firstName: String
     lastName: String
+    properties: [Property]
   }
 
   type Property {
@@ -14,6 +15,7 @@ const typeDefs = gql`
     state: String
     zip: String
     rent: Float
+    user: User
   }
 
   type Query {
