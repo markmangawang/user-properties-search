@@ -19,7 +19,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    search(query: String): [Property]
+    search(query: String, page: Int, pageSize: Int): [Property]
   }
 `;
 

@@ -3,7 +3,7 @@ import resolvers from '../server/resolvers';
 import models from '../models';
 
 describe('Test resolvers', () => {
-  beforeEach(async (done) => {
+  beforeAll(async (done) => {
     await new Promise(async (resolve, reject) => {
       const migrate = exec(
         'sequelize db:migrate',
@@ -75,7 +75,7 @@ describe('Test resolvers', () => {
     done();
   });
 
-  afterEach(async (done) => {
+  afterAll(async (done) => {
     await new Promise(async (resolve, reject) => {
       const migrate = exec(
         'sequelize db:migrate:undo:all',
@@ -142,5 +142,27 @@ describe('Test resolvers', () => {
     for (let i = 0; i < results.length; i += 1) {
       expect(results[i].user.firstName.toLowerCase()).toEqual(expect.stringContaining('john'));
     }
+  });
+
+  test('query: search should limit list to page and pageSize', async () => {
+    const args = {
+      query: 'john',
+      page: 1,
+      pageSize: 2,
+    };
+
+    const context = {
+      models,
+    };
+
+    let results = await resolvers.Query.search(null, args, context);
+
+    expect(results.length).toEqual(2);
+
+    args.page = 2;
+
+    results = await resolvers.Query.search(null, args, context);
+
+    expect(results.length).toEqual(1);
   });
 });

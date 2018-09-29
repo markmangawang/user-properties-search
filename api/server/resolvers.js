@@ -1,6 +1,6 @@
 const resolvers = {
   Query: {
-    search: (parent, { query }, { models }) => {
+    search: (parent, { query, page = 1, pageSize = 10 }, { models }) => {
       const ILIKE = models.Sequelize.Op.iLike;
 
       return models.Property.findAll({
@@ -13,6 +13,8 @@ const resolvers = {
             { '$user.lastName$': { [ILIKE]: `%${query}%` } },
           ],
         },
+        offset: pageSize * (page - 1),
+        limit: pageSize,
         include: [
           {
             model: models.User,
