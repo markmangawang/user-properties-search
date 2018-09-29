@@ -1,22 +1,48 @@
-// This is a (sample) collection of books we'll be able to query
-// the GraphQL server for.  A more complete example might fetch
-// from an existing data source like a REST API or database.
-const books = [
+const users = [
   {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
+    id: 1,
+    firstName: 'Johnny',
+    lastName: 'Test',
   },
   {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
+    id: 2,
+    firstName: 'Johnny 2',
+    lastName: 'Test 2',
   },
 ];
 
-// Resolvers define the technique for fetching the types in the
-// schema.  We'll retrieve books from the "books" array above.
+const properties = [
+  {
+    id: 1,
+    street: 'Calle Pogi',
+    city: 'Magic City',
+    state: 'State College',
+    zip: '1234',
+    rent: 10,
+  },
+  {
+    id: 2,
+    street: 'Groove Street, Home',
+    city: 'San Andreas',
+    state: 'Alchemist',
+    zip: '345546',
+    rent: 100,
+  },
+  {
+    id: 3,
+    street: 'Molave St.',
+    city: 'Davao City',
+    state: 'Del sur',
+    zip: '8000',
+    rent: 5000,
+  },
+];
+
 const resolvers = {
   Query: {
-    books: () => books,
+    hello: () => 'Hello World',
+    users: () => users,
+    properties: () => properties,
   },
 };
 

@@ -1,20 +1,25 @@
 import { gql } from 'apollo-server';
 
-// Type defin, gqlitions define the "shape" of your data and specify
-// which ways the data can be fetched from the GraphQL server.
 const typeDefs = gql`
-  # Comments in GraphQL are defined with the hash (#) symbol.
-
-  # This "Book" type can be used in other type declarations.
-  type Book {
-    title: String
-    author: String
+  type User {
+    id: ID
+    firstName: String
+    lastName: String
   }
 
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
+  type Property {
+    id: ID
+    street: String
+    city: String
+    state: String
+    zip: String
+    rent: Float
+  }
+
   type Query {
-    books: [Book]
+    hello: String
+    users: [User]
+    properties: [Property]
   }
 `;
 
