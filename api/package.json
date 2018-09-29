@@ -7,7 +7,7 @@
     "lint": "./node_modules/.bin/eslint ./",
     "dev": "nodemon --exec 'npm run lint && babel-node index.js'",
     "db": "./node_modules/.bin/sequelize",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "author": "Jethro Ordaneza <jet.oneza@gmail.com>",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.4"
   },
   "dependencies": {

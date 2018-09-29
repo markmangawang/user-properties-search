@@ -19,9 +19,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    hello: String
-    users: [User]
-    properties: [Property]
+    search(query: String): [Property]
   }
 `;
 

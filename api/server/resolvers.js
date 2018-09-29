@@ -1,22 +1,26 @@
 const resolvers = {
   Query: {
-    hello: () => 'Hello World',
-    users: (parent, args, { models }) => models.User.findAll({
-      include: [
-        {
-          model: models.Property,
-          as: 'properties',
+    search: (parent, { query }, { models }) => {
+      const ILIKE = models.Sequelize.Op.iLike;
+
+      return models.Property.findAll({
+        where: {
+          $or: [
+            { street: { [ILIKE]: `%${query}%` } },
+            { city: { [ILIKE]: `%${query}%` } },
+            { state: { [ILIKE]: `%${query}%` } },
+            { '$user.firstName$': { [ILIKE]: `%${query}%` } },
+            { '$user.lastName$': { [ILIKE]: `%${query}%` } },
+          ],
         },
-      ],
-    }),
-    properties: (parent, args, { models }) => models.Property.findAll({
-      include: [
-        {
-          model: models.User,
-          as: 'user',
-        },
-      ],
-    }),
+        include: [
+          {
+            model: models.User,
+            as: 'user',
+          },
+        ],
+      });
+    },
   },
 };
 
