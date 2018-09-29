@@ -1,2 +1,33 @@
 # user-properties-search
-Onerent coding challenge
+This is a Onerent coding challenge.
+
+## Running the server
+Go to `/api` directory and install dependencies.
+```bash
+$ cd /api
+$ npm install
+```
+
+Create two postgres database named `user_properties_dev_db` for local db and `user_properties_test_db` for test db.
+
+Run the database migration:
+```bash
+$ npm run db db:migrate
+```
+
+Run seed to populate database with sample data:
+```bash
+$ npm run db db:seed:all
+```
+
+Run app:
+```bash
+$ npm run dev
+```
+
+Go to localhost:4000 to play with the graphql API.
+
+Run tests:
+```bash
+$ npm run test
+```
