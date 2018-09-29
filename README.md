@@ -31,3 +31,20 @@ Run tests:
 ```bash
 $ npm run test
 ```
+## Running the webapp
+On a separate terminal, go to `/webapp` directory and install the dependencies.
+
+```bash
+$ cd /webapp
+$ npm install
+```
+
+Run react app:
+```bash
+$ npm start
+```
+
+Run tests:
+```bash
+$ npm test
+```
