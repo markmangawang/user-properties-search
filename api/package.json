@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js",
+    "dev": "nodemon --exec './node_modules/.bin/eslint ./ && babel-node index.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jethro Ordaneza <jet.oneza@gmail.com>",
@@ -18,5 +18,9 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "apollo-server": "^2.1.0",
+    "graphql": "^14.0.2"
   }
 }
