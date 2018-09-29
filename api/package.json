@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec './node_modules/.bin/eslint ./ && babel-node index.js'",
+    "db": "./node_modules/.bin/sequelize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jethro Ordaneza <jet.oneza@gmail.com>",
@@ -21,6 +22,11 @@
   },
   "dependencies": {
     "apollo-server": "^2.1.0",
-    "graphql": "^14.0.2"
+    "dotenv": "^6.0.0",
+    "graphql": "^14.0.2",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.39.0",
+    "sequelize-cli": "^4.1.1"
   }
 }
