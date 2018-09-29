@@ -7,81 +7,70 @@ describe('Test resolvers', () => {
     await new Promise(async (resolve, reject) => {
       const migrate = exec(
         'sequelize db:migrate',
-        {env: process.env},
-        (err, stdout, stderr) => {
+        { env: process.env },
+        (err) => {
           if (err) {
             reject(err);
           } else {
             resolve();
           }
-        }
+        },
       );
 
       migrate.stdout.pipe(process.stdout);
       migrate.stderr.pipe(process.stderr);
     });
 
-    const users = [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-      },
-      {
-        firstName: 'Johnny',
-        lastName: 'Dee'
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Adams',
-      },
-    ];
+    await models.User.create({
+      firstName: 'John',
+      lastName: 'Doe',
+    });
 
-    for(let user of users) {
-      await models.User.create({
-        ...user,
-      });
-    }
+    await models.User.create({
+      firstName: 'Johnny',
+      lastName: 'Dee',
+    });
 
-    const properties = [
-      {
-        userId: 1,
-        street: 'Groove Street',
-        city: 'Tokyo',
-        state: 'Tokyo',
-        zip: '1235',
-        rent: 100,
-      },
-      {
-        userId: 1,
-        street: '2nd Groove Street',
-        city: 'Tokyo',
-        state: 'Tokyo',
-        zip: '4567',
-        rent: 100,
-      },
-      {
-        userId: 2,
-        street: '3rd Street',
-        city: 'San Francisco',
-        state: 'California',
-        zip: '8000',
-        rent: 100,
-      },
-      {
-        userId: 3,
-        street: '4th Street',
-        city: 'Davao City',
-        state: 'Davao del Sur',
-        zip: '8000',
-        rent: 100,
-      },
-    ];
+    await models.User.create({
+      firstName: 'Jane',
+      lastName: 'Adams',
+    });
 
-    for(let property of properties) {
-      await models.Property.create({
-        ...property,
-      });
-    }
+    await models.Property.create({
+      userId: 1,
+      street: 'Groove Street',
+      city: 'Tokyo',
+      state: 'Tokyo',
+      zip: '1235',
+      rent: 100,
+    });
+
+    await models.Property.create({
+      userId: 1,
+      street: '2nd Groove Street',
+      city: 'Tokyo',
+      state: 'Tokyo',
+      zip: '4567',
+      rent: 100,
+    });
+
+    await models.Property.create({
+      userId: 2,
+      street: '3rd Street',
+      city: 'San Francisco',
+      state: 'California',
+      zip: '8000',
+      rent: 100,
+    });
+
+    await models.Property.create({
+      userId: 3,
+      street: '4th Street',
+      city: 'Davao City',
+      state: 'Davao del Sur',
+      zip: '8000',
+      rent: 100,
+    });
 
     done();
   });
@@ -90,14 +79,14 @@ describe('Test resolvers', () => {
     await new Promise(async (resolve, reject) => {
       const migrate = exec(
         'sequelize db:migrate:undo:all',
-        {env: process.env},
-        (err, stdout, stderr) => {
+        { env: process.env },
+        (err) => {
           if (err) {
             reject(err);
           } else {
             resolve();
           }
-        }
+        },
       );
 
       migrate.stdout.pipe(process.stdout);
@@ -107,7 +96,7 @@ describe('Test resolvers', () => {
     done();
   });
 
-  test(`query: search should return empty list if nothing found`, async () => {
+  test('query: search should return empty list if nothing found', async () => {
     const args = {
       query: 'Nothing',
     };
@@ -121,7 +110,7 @@ describe('Test resolvers', () => {
     expect(result.length).toEqual(0);
   });
 
-  test(`query: search should return list if query matched`, async () => {
+  test('query: search should return list if query matched', async () => {
     const args = {
       query: 'san',
     };
@@ -137,7 +126,7 @@ describe('Test resolvers', () => {
     expect(result[0].user.firstName).toEqual('Johnny');
   });
 
-  test(`query: search should return list if query matched in user's name`, async () => {
+  test('query: search should return list if query matched in user\'s name', async () => {
     const args = {
       query: 'john',
     };
@@ -150,9 +139,8 @@ describe('Test resolvers', () => {
 
     expect(results.length).toEqual(3);
 
-    for (let result of results) {
-      expect(result.user.firstName.toLowerCase()).toEqual(expect.stringContaining('john'));
+    for (let i = 0; i < results.length; i += 1) {
+      expect(results[i].user.firstName.toLowerCase()).toEqual(expect.stringContaining('john'));
     }
   });
 });
-

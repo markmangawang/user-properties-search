@@ -1,7 +1,7 @@
 import {
   makeExecutableSchema,
   addMockFunctionsToSchema,
-  mockServer
+  mockServer,
 } from 'graphql-tools';
 
 import typeDefs from '../server/typeDefs';
@@ -25,11 +25,11 @@ describe('Test typeDefs', () => {
       User: () => ({
         firstName: 'John',
         lastName: 'Doe',
-      })
-    }
+      }),
+    },
   });
 
-  test(`query: search should return list of properties`, async () => {
+  test('query: search should return list of properties', async () => {
     const query = `
       {
         search(query: "san") {
@@ -52,33 +52,33 @@ describe('Test typeDefs', () => {
       data: {
         search: [
           {
-            id: "1",
+            id: '1',
             city: 'San Francisco',
             state: 'California',
             street: 'Groove Street',
             zip: '12345',
             rent: 100.5,
             user: {
-              id: "1",
+              id: '1',
               firstName: 'John',
               lastName: 'Doe',
-            }
+            },
           },
           {
-            id: "1",
+            id: '1',
             city: 'San Francisco',
             state: 'California',
             street: 'Groove Street',
             zip: '12345',
             rent: 100.5,
             user: {
-              id: "1",
+              id: '1',
               firstName: 'John',
               lastName: 'Doe',
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     };
 
     const result = await testMockServer.query(query);
