@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Properties /> test Should render login page 1`] = `
+exports[`<Properties /> test Should render component 1`] = `
 <div
   className="ui centered stackable three column grid"
 >

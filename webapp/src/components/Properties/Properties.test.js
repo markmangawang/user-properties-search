@@ -59,7 +59,7 @@ describe('<Properties /> test', () => {
     expect(wrapper.find(Card).length).toEqual(3);
   });
 
-  test('Should render login page', () => {
+  test('Should render component', () => {
     const component = <Properties {...props}/>
       shallow(component);
 
