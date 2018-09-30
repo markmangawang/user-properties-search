@@ -162,7 +162,7 @@ describe('Test resolvers', () => {
 
     args.page = 2;
 
-    const response  = await resolvers.Query.search(null, args, context);
+    const response = await resolvers.Query.search(null, args, context);
 
     expect(response.results.length).toEqual(1);
     expect(response.pagination.page).toEqual(2);
