@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Properties /> test Should render login page 1`] = `
+<div
+  className="ui centered stackable three column grid"
+>
+  <div
+    className="column"
+  >
+    <div
+      className="ui card"
+      href={undefined}
+      onClick={[Function]}
+    >
+      <div
+        className="content"
+      >
+        <div
+          className="header"
+        >
+          Wintheiser Gateway
+        </div>
+        <div
+          className="meta"
+        >
+          <span>
+            Samirstad
+            , 
+            South Carolina
+          </span>
+        </div>
+        <div
+          className="description"
+        >
+          $
+          829.6
+        </div>
+      </div>
+      <div
+        className="extra content"
+      >
+        <a>
+          <i
+            aria-hidden="true"
+            className="user icon"
+          />
+          Lukas
+           
+          Huels
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="column"
+  >
+    <div
+      className="ui card"
+      href={undefined}
+      onClick={[Function]}
+    >
+      <div
+        className="content"
+      >
+        <div
+          className="header"
+        >
+          Braulio Cape
+        </div>
+        <div
+          className="meta"
+        >
+          <span>
+            North Kristin
+            , 
+            Vermont
+          </span>
+        </div>
+        <div
+          className="description"
+        >
+          $
+          629.33
+        </div>
+      </div>
+      <div
+        className="extra content"
+      >
+        <a>
+          <i
+            aria-hidden="true"
+            className="user icon"
+          />
+          Liliana
+           
+          Wehner
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="column"
+  >
+    <div
+      className="ui card"
+      href={undefined}
+      onClick={[Function]}
+    >
+      <div
+        className="content"
+      >
+        <div
+          className="header"
+        >
+          Javier Groves
+        </div>
+        <div
+          className="meta"
+        >
+          <span>
+            Port Mallieton
+            , 
+            Indiana
+          </span>
+        </div>
+        <div
+          className="description"
+        >
+          $
+          451.02
+        </div>
+      </div>
+      <div
+        className="extra content"
+      >
+        <a>
+          <i
+            aria-hidden="true"
+            className="user icon"
+          />
+          Arvid
+           
+          Bailey
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

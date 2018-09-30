@@ -1,9 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import renderer from 'react-test-renderer';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import { shallow } from 'enzyme';
+
+import App from './App';
+import Properties from '../Properties';
+
+describe('<App /> test', () => {
+  test('Should render properties list in app', () => {
+    const wrapper = shallow(<App/>);
+
+    expect(wrapper.find(Properties).length).toEqual(1);
+  });
+
+  test('Should render component', () => {
+    const component = <App/>
+      shallow(component);
+
+    const renderedComponent = renderer.create(component);
+    const tree = renderedComponent.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

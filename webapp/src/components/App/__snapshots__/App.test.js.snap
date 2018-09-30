@@ -1,0 +1,494 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> test Should render component 1`] = `
+<div
+  className="ui vertical segment"
+  style={
+    Object {
+      "padding": "8em 0",
+    }
+  }
+>
+  <div
+    className="ui container"
+  >
+    <h1>
+      App
+    </h1>
+    <div
+      className="ui centered stackable three column grid"
+    >
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Wintheiser Gateway
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                Samirstad
+                , 
+                South Carolina
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              829.6
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Lukas
+               
+              Huels
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Braulio Cape
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                North Kristin
+                , 
+                Vermont
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              629.33
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Liliana
+               
+              Wehner
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Javier Groves
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                Port Mallieton
+                , 
+                Indiana
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              451.02
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Arvid
+               
+              Bailey
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Lacey Course
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                North Leathabury
+                , 
+                West Virginia
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              418.56
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Constance
+               
+              Pfeffer
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Annamarie Lodge
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                West Rashawn
+                , 
+                Georgia
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              376.16
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Maryse
+               
+              Hegmann
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Ondricka Stream
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                Lake Hugh
+                , 
+                Wyoming
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              611.08
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Ayden
+               
+              Wunsch
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Mack Street
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                Keithberg
+                , 
+                New Mexico
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              740.47
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Annabelle
+               
+              Nolan
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Kacie Summit
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                Port Adalineport
+                , 
+                Wyoming
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              842.95
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Ayden
+               
+              Wunsch
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Brooks Dale
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                New Alvahberg
+                , 
+                Tennessee
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              828.34
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Glen
+               
+              Hahn
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Dibbert Extensions
+            </div>
+            <div
+              className="meta"
+            >
+              <span>
+                Dooleyborough
+                , 
+                Missouri
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              $
+              364.5
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            <a>
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+              Annabelle
+               
+              Nolan
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
