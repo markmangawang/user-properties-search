@@ -26,23 +26,37 @@ describe('Test typeDefs', () => {
         firstName: 'John',
         lastName: 'Doe',
       }),
+      Pagination: () => ({
+        rowCount: 10,
+        pageCount: 1,
+        page: 1,
+        pageSize: 10,
+      }),
     },
   });
 
   test('query: search should return list of properties', async () => {
     const query = `
       {
-        search(query: "san") {
-          id
-          street
-          city
-          state
-          zip
-          rent
-          user {
+        search(query: "san", page: 1) {
+          results {
             id
-            firstName
-            lastName
+            street
+            city
+            state
+            zip
+            rent
+            user {
+              id
+              firstName
+              lastName
+            }
+          }
+          pagination {
+            page
+            pageSize
+            pageCount
+            rowCount
           }
         }
       }
@@ -50,34 +64,42 @@ describe('Test typeDefs', () => {
 
     const expected = {
       data: {
-        search: [
-          {
-            id: '1',
-            city: 'San Francisco',
-            state: 'California',
-            street: 'Groove Street',
-            zip: '12345',
-            rent: 100.5,
-            user: {
-              id: '1',
-              firstName: 'John',
-              lastName: 'Doe',
-            },
+        search: {
+          pagination: {
+            rowCount: 10,
+            pageCount: 1,
+            page: 1,
+            pageSize: 10,
           },
-          {
-            id: '1',
-            city: 'San Francisco',
-            state: 'California',
-            street: 'Groove Street',
-            zip: '12345',
-            rent: 100.5,
-            user: {
+          results: [
+            {
               id: '1',
-              firstName: 'John',
-              lastName: 'Doe',
+              city: 'San Francisco',
+              state: 'California',
+              street: 'Groove Street',
+              zip: '12345',
+              rent: 100.5,
+              user: {
+                id: '1',
+                firstName: 'John',
+                lastName: 'Doe',
+              },
             },
-          },
-        ],
+            {
+              id: '1',
+              city: 'San Francisco',
+              state: 'California',
+              street: 'Groove Street',
+              zip: '12345',
+              rent: 100.5,
+              user: {
+                id: '1',
+                firstName: 'John',
+                lastName: 'Doe',
+              },
+            },
+          ],
+        },
       },
     };
 

@@ -105,25 +105,26 @@ describe('Test resolvers', () => {
       models,
     };
 
-    const result = await resolvers.Query.search(null, args, context);
+    const { results } = await resolvers.Query.search(null, args, context);
 
-    expect(result.length).toEqual(0);
+    expect(results.length).toEqual(0);
   });
 
   test('query: search should return list if query matched', async () => {
     const args = {
       query: 'san',
+      page: 1,
     };
 
     const context = {
       models,
     };
 
-    const result = await resolvers.Query.search(null, args, context);
+    const { results } = await resolvers.Query.search(null, args, context);
 
-    expect(result.length).toEqual(1);
-    expect(result[0].city).toEqual('San Francisco');
-    expect(result[0].user.firstName).toEqual('Johnny');
+    expect(results.length).toEqual(1);
+    expect(results[0].city).toEqual('San Francisco');
+    expect(results[0].user.firstName).toEqual('Johnny');
   });
 
   test('query: search should return list if query matched in user\'s name', async () => {
@@ -135,7 +136,7 @@ describe('Test resolvers', () => {
       models,
     };
 
-    const results = await resolvers.Query.search(null, args, context);
+    const { results } = await resolvers.Query.search(null, args, context);
 
     expect(results.length).toEqual(3);
 
@@ -155,14 +156,15 @@ describe('Test resolvers', () => {
       models,
     };
 
-    let results = await resolvers.Query.search(null, args, context);
+    const { results } = await resolvers.Query.search(null, args, context);
 
     expect(results.length).toEqual(2);
 
     args.page = 2;
 
-    results = await resolvers.Query.search(null, args, context);
+    const response  = await resolvers.Query.search(null, args, context);
 
-    expect(results.length).toEqual(1);
+    expect(response.results.length).toEqual(1);
+    expect(response.pagination.page).toEqual(2);
   });
 });

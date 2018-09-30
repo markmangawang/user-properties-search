@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Card, Icon, Segment, Loader } from 'semantic-ui-react';
 
-function Properties({ properties, loading }) {
+function Properties({ list, loading }) {
   if (loading) {
     return (
       <Loader
@@ -14,13 +14,13 @@ function Properties({ properties, loading }) {
     );
   }
 
-  if (!properties || properties.length === 0) {
+  if (!list || list.length === 0) {
     return <Segment>No results found.</Segment>;
   }
 
   return (
     <Grid centered stackable columns={3}>
-      { properties.map((property) => {
+      { list.map((property) => {
         return (
           <Grid.Column key={property.id}>
             <Card>
@@ -46,7 +46,7 @@ function Properties({ properties, loading }) {
 }
 
 Properties.propTypes = {
-  properties: PropTypes.arrayOf(
+  list: PropTypes.arrayOf(
     PropTypes.shape({
       street: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired,

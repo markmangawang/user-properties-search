@@ -1,9 +1,9 @@
 const resolvers = {
   Query: {
-    search: (parent, { query, page = 1, pageSize = 10 }, { models }) => {
+    search: async (parent, { query, page = 1, pageSize = 12 }, { models }) => {
       const ILIKE = models.Sequelize.Op.iLike;
 
-      return models.Property.findAll({
+      const results = await models.Property.findAll({
         where: {
           $or: [
             { street: { [ILIKE]: `%${query}%` } },
@@ -13,8 +13,6 @@ const resolvers = {
             { '$user.lastName$': { [ILIKE]: `%${query}%` } },
           ],
         },
-        offset: pageSize * (page - 1),
-        limit: pageSize,
         include: [
           {
             model: models.User,
@@ -22,6 +20,20 @@ const resolvers = {
           },
         ],
       });
+
+      const count = results.length;
+      const pages = Math.ceil(count / pageSize);
+      const offset = pageSize * (page - 1);
+
+      return {
+        results: results.slice(offset, offset + pageSize),
+        pagination: {
+          rowCount: count,
+          pageCount: pages,
+          page,
+          pageSize,
+        },
+      };
     },
   },
 };

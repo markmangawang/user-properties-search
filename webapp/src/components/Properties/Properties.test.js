@@ -4,7 +4,7 @@ import { Card, Loader, Segment } from 'semantic-ui-react';
 
 import { shallow, mount } from 'enzyme';
 
-const properties = [
+const list = [
   {
     "id": "11",
     "street": "Wintheiser Gateway",
@@ -50,7 +50,7 @@ import Properties from './Properties';
 
 describe('<Properties /> test', () => {
   const props = {
-    properties,
+    list,
   };
 
   test('Should render list', () => {
@@ -66,7 +66,7 @@ describe('<Properties /> test', () => {
   });
 
   test('Should render nothing found', () => {
-    const wrapper = mount(<Properties properties={[]}/>);
+    const wrapper = mount(<Properties list={[]}/>);
 
     expect(wrapper.find(Segment).length).toEqual(1);
     expect(wrapper.find(Segment).text()).toEqual('No results found.');
@@ -74,7 +74,7 @@ describe('<Properties /> test', () => {
 
   test('Should render component', () => {
     const component = <Properties {...props}/>
-      shallow(component);
+    shallow(component);
 
     const renderedComponent = renderer.create(component);
     const tree = renderedComponent.toJSON();

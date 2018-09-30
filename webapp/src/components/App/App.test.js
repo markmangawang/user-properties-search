@@ -9,7 +9,9 @@ import Properties from '../Properties';
 describe('<App /> test', () => {
   const props = {
     loading: false,
-    properties: [],
+    properties: {
+      results: [],
+    },
     search: jest.fn(),
   }
 

@@ -18,8 +18,20 @@ const typeDefs = gql`
     user: User
   }
 
+  type Search {
+    results: [Property]
+    pagination: Pagination
+  }
+
+  type Pagination {
+    rowCount: Int,
+    pageCount: Int,
+    page: Int,
+    pageSize: Int,
+  }
+
   type Query {
-    search(query: String, page: Int, pageSize: Int): [Property]
+    search(query: String, page: Int, pageSize: Int): Search
   }
 `;
 
