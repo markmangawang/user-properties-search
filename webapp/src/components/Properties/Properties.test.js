@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Card } from 'semantic-ui-react';
+import { Card, Loader, Segment } from 'semantic-ui-react';
 
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 const properties = [
   {
@@ -57,6 +57,19 @@ describe('<Properties /> test', () => {
     const wrapper = shallow(<Properties {...props}/>);
 
     expect(wrapper.find(Card).length).toEqual(3);
+  });
+
+  test('Should render loader', () => {
+    const wrapper = shallow(<Properties {...props} loading={true}/>);
+
+    expect(wrapper.find(Loader).length).toEqual(1);
+  });
+
+  test('Should render nothing found', () => {
+    const wrapper = mount(<Properties properties={[]}/>);
+
+    expect(wrapper.find(Segment).length).toEqual(1);
+    expect(wrapper.find(Segment).text()).toEqual('No results found.');
   });
 
   test('Should render component', () => {

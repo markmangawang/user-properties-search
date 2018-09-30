@@ -1,8 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, Icon } from 'semantic-ui-react';
+import { Grid, Card, Icon, Segment, Loader } from 'semantic-ui-react';
 
-function Properties({ properties }) {
+function Properties({ properties, loading }) {
+  if (loading) {
+    return (
+      <Loader
+        inline="centered"
+        active
+        size="large">
+        Loading
+      </Loader>
+    );
+  }
+
+  if (!properties || properties.length === 0) {
+    return <Segment>No results found.</Segment>;
+  }
+
   return (
     <Grid centered stackable columns={3}>
       { properties.map((property) => {
