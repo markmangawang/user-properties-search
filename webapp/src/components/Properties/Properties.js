@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, Icon, Segment, Loader } from 'semantic-ui-react';
+import { Grid, Card, Icon, Segment, Loader, Image } from 'semantic-ui-react';
+import { imageUrlFaker } from '../../utils/mocks';
 
 function Properties({ list, loading }) {
   if (loading) {
@@ -23,7 +24,8 @@ function Properties({ list, loading }) {
       { list.map((property) => {
         return (
           <Grid.Column key={property.id}>
-            <Card>
+            <Card color="green">
+              <Image src={ imageUrlFaker('house', property.id) } />
               <Card.Content>
                 <Card.Header>{ property.street }</Card.Header>
                 <Card.Meta>
@@ -31,12 +33,14 @@ function Properties({ list, loading }) {
                 </Card.Meta>
                 <Card.Description>${ property.rent }</Card.Description>
               </Card.Content>
-              <Card.Content extra>
-                <a>
-                  <Icon name='user' />
-                  { property.user.firstName } { property.user.lastName }
-                </a>
-              </Card.Content>
+              { property.user && (
+                <Card.Content extra>
+                  <a>
+                    <Icon name='user' />
+                    { property.user.firstName } { property.user.lastName }
+                  </a>
+                </Card.Content>
+              ) }
             </Card>
           </Grid.Column>
         );

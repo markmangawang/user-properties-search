@@ -8,10 +8,14 @@ exports[`<Properties /> test Should render component 1`] = `
     className="column"
   >
     <div
-      className="ui card"
+      className="ui green card"
       href={undefined}
       onClick={[Function]}
     >
+      <img
+        className="ui image"
+        src="https://loremflickr.com/320/240/house/all?lock=11"
+      />
       <div
         className="content"
       >
@@ -55,10 +59,14 @@ exports[`<Properties /> test Should render component 1`] = `
     className="column"
   >
     <div
-      className="ui card"
+      className="ui green card"
       href={undefined}
       onClick={[Function]}
     >
+      <img
+        className="ui image"
+        src="https://loremflickr.com/320/240/house/all?lock=12"
+      />
       <div
         className="content"
       >
@@ -102,10 +110,14 @@ exports[`<Properties /> test Should render component 1`] = `
     className="column"
   >
     <div
-      className="ui card"
+      className="ui green card"
       href={undefined}
       onClick={[Function]}
     >
+      <img
+        className="ui image"
+        src="https://loremflickr.com/320/240/house/all?lock=13"
+      />
       <div
         className="content"
       >
