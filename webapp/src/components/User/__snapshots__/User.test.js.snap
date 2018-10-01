@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<User /> test Should render user 1`] = `
+<div
+  className="ui centered grid"
+  style={
+    Object {
+      "margin": "1em 0",
+    }
+  }
+>
+  <div
+    className="ui blue card"
+    href={undefined}
+    onClick={[Function]}
+  >
+    <img
+      className="ui image"
+      src="http://image.com"
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        My Name
+      </div>
+    </div>
+    <div
+      className="extra content"
+    >
+      <a>
+        <i
+          aria-hidden="true"
+          className="home icon"
+        />
+        0
+         Listing/s
+      </a>
+    </div>
+  </div>
+</div>
+`;
