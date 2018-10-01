@@ -21,42 +21,195 @@ exports[`<App /> test Should render component 1`] = `
       <div
         className="sixteen wide column"
       >
-        <form
-          action={undefined}
-          className="ui form"
-          onSubmit={[Function]}
+        <div
+          className="ui category search"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
         >
           <div
-            className="ui action input"
+            className="ui icon input"
           >
             <input
+              autoComplete="off"
+              className="prompt"
               disabled={undefined}
               onChange={[Function]}
-              placeholder="Search"
-              tabIndex={undefined}
+              onClick={[Function]}
+              tabIndex="0"
               type="text"
               value=""
             />
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="search icon"
-              />
-            </button>
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
           </div>
-        </form>
+          <div
+            className="results transition"
+          >
+            <div
+              className="message empty"
+            >
+              <div
+                className="header"
+              >
+                No results found.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
       className="ui segment"
     >
       No results found.
+    </div>
+    <div
+      className="ui vertical center aligned segment"
+    >
+      <div
+        aria-label="Pagination Navigation"
+        className="ui pagination menu"
+        role="navigation"
+      >
+        <a
+          aria-current={false}
+          aria-label="First item"
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="firstItem"
+          value={1}
+        >
+          «
+        </a>
+        <a
+          aria-current={false}
+          aria-label="Previous item"
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="prevItem"
+          value={1}
+        >
+          ⟨
+        </a>
+        <a
+          aria-current={true}
+          className="active item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="pageItem"
+          value={1}
+        >
+          1
+        </a>
+        <a
+          aria-current={false}
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="pageItem"
+          value={2}
+        >
+          2
+        </a>
+        <a
+          aria-current={false}
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="pageItem"
+          value={3}
+        >
+          3
+        </a>
+        <a
+          aria-current={false}
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="pageItem"
+          value={4}
+        >
+          4
+        </a>
+        <a
+          aria-current={false}
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="pageItem"
+          value={5}
+        >
+          5
+        </a>
+        <a
+          aria-current={false}
+          className="disabled item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={-1}
+          type="ellipsisItem"
+          value={6}
+        >
+          ...
+        </a>
+        <a
+          aria-current={false}
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="pageItem"
+          value={10}
+        >
+          10
+        </a>
+        <a
+          aria-current={false}
+          aria-label="Next item"
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="nextItem"
+          value={2}
+        >
+          ⟩
+        </a>
+        <a
+          aria-current={false}
+          aria-label="Last item"
+          className="item"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+          type="lastItem"
+          value={10}
+        >
+          »
+        </a>
+      </div>
+      <div
+        style={
+          Object {
+            "margin": "1em 0",
+          }
+        }
+      >
+        100
+         Results
+      </div>
     </div>
   </div>
 </div>

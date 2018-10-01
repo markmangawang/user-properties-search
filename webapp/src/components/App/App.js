@@ -1,28 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import { graphql, compose } from 'react-apollo';
 import { Segment, Container, Pagination } from 'semantic-ui-react';
 
-import SearchInput from '../SearchInput';
 import Properties from '../Properties';
+import AutoCompleteInput from '../AutoCompleteInput';
+import User from '../User';
+
+import { searchQuery, autoCompleteQuery } from '../../queries';
+import { USER_TYPE, PROPERTY_TYPE } from '../../utils/constants';
 
 export class App extends React.Component {
   static propTypes = {
-    loading: PropTypes.bool.isRequired,
-    properties: PropTypes.shape({
-      results: PropTypes.array.isRequired,
+    searchQueryProps: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      properties: PropTypes.shape({
+        results: PropTypes.array.isRequired,
+      }).isRequired,
     }).isRequired,
     search: PropTypes.func.isRequired,
+
+    autoCompleteQueryProps: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      results: PropTypes.shape({
+        users: PropTypes.array.isRequired,
+        properties: PropTypes.array.isRequired,
+      }).isRequired,
+    }).isRequired,
+    autoCompleteSearch: PropTypes.func.isRequired,
   }
 
   state = {
     query: '',
     page: 1,
+    activeUser: null,
   }
 
   search = () => {
     const { query, page } = this.state;
+
+    this.setState({ activeUser: null });
 
     this.props.search({ query, page });
   }
@@ -39,17 +56,60 @@ export class App extends React.Component {
     this.search();
   }
 
+  handleAutoCompleteChange = async (query) => {
+    if (!query) {
+      await this.setState({ query: '', page: 1 });
+
+      this.search();
+
+      return;
+    }
+
+    this.props.autoCompleteSearch({ query });
+  }
+
+  handleAutoCompleteResultSelect = async (data) => {
+    if (data.type === PROPERTY_TYPE.SINGLE_KEY) {
+      await this.setState({ query: data.title, page: 1 });
+
+      this.search();
+
+      return;
+    }
+
+    if (data.type === USER_TYPE.SINGLE_KEY) {
+      this.setState({ activeUser: data });
+    }
+  }
+
   render () {
-    const { properties, loading } = this.props;
+    const { activeUser } = this.state;
+    const { searchQueryProps, autoCompleteQueryProps } = this.props;
+    const { properties, loading } = searchQueryProps;
     const { pagination, results } = properties;
+
+    const list = activeUser ? activeUser.properties : results;
 
     return (
       <Segment vertical style={{ padding: '8em 0' }}>
         <Container>
           <h1>Properties Search</h1>
-          <SearchInput onSubmit={this.handleSearchSubmit}/>
-          <Properties list={results} loading={loading}/>
-          { pagination && (
+          <AutoCompleteInput
+            loading={autoCompleteQueryProps.loading}
+            results={autoCompleteQueryProps.results}
+            onResultSelect={this.handleAutoCompleteResultSelect}
+            onSearchChange={this.handleAutoCompleteChange}/>
+
+          { activeUser && (
+            <User
+              listingsCount={activeUser.properties.length}
+              image={activeUser.image}
+              name={activeUser.title}/>
+          ) }
+
+          <Properties list={list} loading={loading}/>
+
+          { !activeUser && pagination && (
             <Segment vertical textAlign="center">
               <Pagination
                 onPageChange={this.handlePageChange}
@@ -67,33 +127,7 @@ export class App extends React.Component {
   }
 }
 
-const query = gql`
-  query($query: String, $page: Int) {
-    search(query: $query, page: $page) {
-      results {
-        id
-        street
-        city
-        state
-        zip
-        rent
-        user {
-          id
-          firstName
-          lastName
-        }
-      }
-      pagination {
-        page
-        pageSize
-        pageCount
-        rowCount
-      }
-    }
-  }
-`;
-
-export default graphql(query, {
+const search = graphql(searchQuery, {
   options: (props) => ({
     variables: {
       query: '',
@@ -101,10 +135,27 @@ export default graphql(query, {
     }
   }),
   props: ({ data }) => ({
-    loading: data.loading,
-    properties: data.search || {
-      results: [],
+    searchQueryProps: {
+      loading: data.loading,
+      properties: data.search || {
+        results: [],
+      },
     },
     search: data.refetch,
   }),
-})(App);
+})
+
+const autoComplete = graphql(autoCompleteQuery, {
+  props: ({ data }) => ({
+    autoCompleteQueryProps: {
+      loading: data.loading,
+      results: data.autoCompleteSearch || {
+        users: [],
+        properties: [],
+      },
+    },
+    autoCompleteSearch: data.refetch,
+  }),
+});
+
+export default compose(search, autoComplete)(App);
