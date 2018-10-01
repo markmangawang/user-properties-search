@@ -167,4 +167,39 @@ describe('Test resolvers', () => {
     expect(response.results.length).toEqual(1);
     expect(response.pagination.page).toEqual(2);
   });
+
+  test('query: autoCompleteSearch should return empty lists if nothing found', async () => {
+    const args = {
+      query: 'Nothing',
+    };
+
+    const context = {
+      models,
+    };
+
+    const { users, properties } = await resolvers.Query.autoCompleteSearch(null, args, context);
+
+    expect(users.length).toEqual(0);
+    expect(properties.length).toEqual(0);
+  });
+
+  test('query: autoCompleteSearch should return lists if query matched', async () => {
+    const args = {
+      query: 'da',
+    };
+
+    const context = {
+      models,
+    };
+
+    const { users, properties } = await resolvers.Query.autoCompleteSearch(null, args, context);
+
+    expect(properties.length).toEqual(1);
+    expect(properties[0].city).toEqual('Davao City');
+    expect(properties[0].user.firstName).toEqual('Jane');
+
+    expect(users.length).toEqual(1);
+    expect(users[0].firstName).toEqual('Jane');
+    expect(users[0].properties.length).toEqual(1);
+  });
 });

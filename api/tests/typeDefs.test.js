@@ -107,4 +107,126 @@ describe('Test typeDefs', () => {
 
     expect(result).toEqual(expected);
   });
+
+  test('query: autoCompleteSearch should return list of properties and users', async () => {
+    const query = `
+      {
+        autoCompleteSearch(query: "san") {
+          users {
+            id
+            firstName
+            lastName
+            properties {
+              id
+              street
+              state
+              city
+              zip
+              rent
+            }
+          }
+          properties {
+            id
+            state
+            street
+            city
+            zip
+            rent
+            user {
+              id
+              firstName
+              lastName
+            }
+          }
+        }
+      }
+    `;
+
+    const expected = {
+      data: {
+        autoCompleteSearch: {
+          properties: [
+            {
+              id: '1',
+              city: 'San Francisco',
+              state: 'California',
+              street: 'Groove Street',
+              zip: '12345',
+              rent: 100.5,
+              user: {
+                id: '1',
+                firstName: 'John',
+                lastName: 'Doe',
+              },
+            },
+            {
+              id: '1',
+              city: 'San Francisco',
+              state: 'California',
+              street: 'Groove Street',
+              zip: '12345',
+              rent: 100.5,
+              user: {
+                id: '1',
+                firstName: 'John',
+                lastName: 'Doe',
+              },
+            },
+          ],
+          users: [
+            {
+              id: '1',
+              firstName: 'John',
+              lastName: 'Doe',
+              properties: [
+                {
+                  id: '1',
+                  city: 'San Francisco',
+                  state: 'California',
+                  street: 'Groove Street',
+                  zip: '12345',
+                  rent: 100.5,
+                },
+                {
+                  id: '1',
+                  city: 'San Francisco',
+                  state: 'California',
+                  street: 'Groove Street',
+                  zip: '12345',
+                  rent: 100.5,
+                },
+              ],
+            },
+            {
+              id: '1',
+              firstName: 'John',
+              lastName: 'Doe',
+              properties: [
+                {
+                  id: '1',
+                  city: 'San Francisco',
+                  state: 'California',
+                  street: 'Groove Street',
+                  zip: '12345',
+                  rent: 100.5,
+                },
+                {
+                  id: '1',
+                  city: 'San Francisco',
+                  state: 'California',
+                  street: 'Groove Street',
+                  zip: '12345',
+                  rent: 100.5,
+                },
+              ],
+            },
+          ],
+        },
+      },
+    };
+
+    const result = await testMockServer.query(query);
+
+    expect(result).toEqual(expected);
+  });
 });

@@ -30,8 +30,14 @@ const typeDefs = gql`
     pageSize: Int,
   }
 
+  type AutoCompleteSearch {
+    users: [User]
+    properties: [Property]
+  }
+
   type Query {
     search(query: String, page: Int, pageSize: Int): Search
+    autoCompleteSearch(query: String, limit: Int): AutoCompleteSearch
   }
 `;
 
