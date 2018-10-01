@@ -8,6 +8,12 @@ $ cd /api
 $ npm install
 ```
 
+Create .env
+```
+DB_DEV_USERNAME=<yourdbusername>
+DB_DEV_PASSWORD=<yourdbpassword>
+```
+
 Create two postgres database named `user_properties_dev_db` for local db and `user_properties_test_db` for test db.
 
 Run the database migration:
