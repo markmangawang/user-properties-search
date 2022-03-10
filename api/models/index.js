@@ -1,5 +1,7 @@
-import Sequelize from 'sequelize';
+import Sequelize, { DataTypes } from '@sequelize/core';
 import config from '../config/database';
+import userModel from './user';
+import propertyModel from './property';
 
 const sequelize = new Sequelize(
   config.database,
@@ -11,8 +13,8 @@ const sequelize = new Sequelize(
 const database = {
   sequelize,
   Sequelize,
-  User: sequelize.import('./user'),
-  Property: sequelize.import('./property'),
+  User: userModel(sequelize, DataTypes),
+  Property: propertyModel(sequelize, DataTypes),
 };
 
 Object.keys(database).forEach((modelName) => {

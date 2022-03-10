@@ -1,16 +1,16 @@
+const { Op } = require('@sequelize/core');
+
 const resolvers = {
   Query: {
     search: async (parent, { query, page = 1, pageSize = 12 }, { models }) => {
-      const ILIKE = models.Sequelize.Op.iLike;
-
       const results = await models.Property.findAll({
         where: {
-          $or: [
-            { street: { [ILIKE]: `%${query}%` } },
-            { city: { [ILIKE]: `%${query}%` } },
-            { state: { [ILIKE]: `%${query}%` } },
-            { '$user.firstName$': { [ILIKE]: `%${query}%` } },
-            { '$user.lastName$': { [ILIKE]: `%${query}%` } },
+          [Op.or]: [
+            { street: { [Op.iLike]: `%${query}%` } },
+            { city: { [Op.iLike]: `%${query}%` } },
+            { state: { [Op.iLike]: `%${query}%` } },
+            { '$user.firstName$': { [Op.iLike]: `%${query}%` } },
+            { '$user.lastName$': { [Op.iLike]: `%${query}%` } },
           ],
         },
         include: [
@@ -37,14 +37,12 @@ const resolvers = {
     },
 
     autoCompleteSearch: async (parent, { query, limit = 10 }, { models }) => {
-      const ILIKE = models.Sequelize.Op.iLike;
-
       const properties = await models.Property.findAll({
         where: {
-          $or: [
-            { street: { [ILIKE]: `%${query}%` } },
-            { city: { [ILIKE]: `%${query}%` } },
-            { state: { [ILIKE]: `%${query}%` } },
+          [Op.or]: [
+            { street: { [Op.iLike]: `%${query}%` } },
+            { city: { [Op.iLike]: `%${query}%` } },
+            { state: { [Op.iLike]: `%${query}%` } },
           ],
         },
         limit,
@@ -58,9 +56,9 @@ const resolvers = {
 
       const users = await models.User.findAll({
         where: {
-          $or: [
-            { firstName: { [ILIKE]: `%${query}%` } },
-            { lastName: { [ILIKE]: `%${query}%` } },
+          [Op.or]: [
+            { firstName: { [Op.iLike]: `%${query}%` } },
+            { lastName: { [Op.iLike]: `%${query}%` } },
             models.Sequelize.where(
               models.Sequelize.fn(
                 'concat',
@@ -68,7 +66,7 @@ const resolvers = {
                 ' ',
                 models.Sequelize.col('lastName'),
               ),
-              { [ILIKE]: `%${query}%` },
+              { [Op.iLike]: `%${query}%` },
             ),
           ],
         },
